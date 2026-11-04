@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enketo Toolkit Setup</title>
+<style>
+:root { --bg: #f6f7f9; --card: #ffffff; --fg: #1d1d1f; --muted: #5f6368; --line: #e3e5e8; --accent: #1f6feb; --accent-fg: #ffffff; --ok: #2e7d32; --code: #f0f2f5; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #121214; --card: #1c1c1f; --fg: #f2f2f4; --muted: #a3a3ab; --line: #2f2f34; --accent: #5b9dff; --accent-fg: #0b0b0c; --ok: #66bb6a; --code: #26262a; } }
+:root[data-theme="dark"] { --bg: #121214; --card: #1c1c1f; --fg: #f2f2f4; --muted: #a3a3ab; --line: #2f2f34; --accent: #5b9dff; --accent-fg: #0b0b0c; --ok: #66bb6a; --code: #26262a; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 16px; line-height: 1.55; }
+main { max-width: 680px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 26px; margin: 0 0 6px; }
+h2 { font-size: 19px; margin: 0 0 12px; }
+.lead { color: var(--muted); margin: 0 0 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+.feature { display: flex; gap: 12px; margin: 10px 0; }
+.tag { flex: none; min-width: 96px; text-align: center; font-weight: 600; font-size: 14px; padding: 6px 10px; border-radius: 8px; background: var(--code); height: fit-content; }
+ol { padding-left: 22px; margin: 0; }
+li { margin: 8px 0; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 10px; border: 0; background: var(--accent); color: var(--accent-fg); font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; width: 100%; }
+.btn.secondary { background: transparent; color: var(--fg); border: 1px dashed var(--accent); cursor: grab; }
+.copied { color: var(--ok); font-weight: 600; font-size: 14px; min-height: 22px; margin-top: 8px; }
+textarea { width: 100%; height: 88px; margin-top: 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--code); color: var(--fg); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; padding: 10px; resize: none; }
+.tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+.tab { flex: 1; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: var(--fg); font-size: 15px; font-weight: 600; cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.pane[hidden] { display: none; }
+kbd, .k { font-family: inherit; font-weight: 600; background: var(--code); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: 14px; white-space: nowrap; }
+.note { font-size: 14px; color: var(--muted); margin-top: 12px; }
+dt { font-weight: 600; margin-top: 12px; }
+dd { margin: 4px 0 0; color: var(--muted); }
+footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Enketo Toolkit</h1>
+<p class="lead">A bookmark that helps you rescue saved drafts in Enketo web forms. Set it up once, then use it whenever a draft gets stuck.</p>
+
+<section class="card">
+<h2>What it does</h2>
+<div class="feature"><span class="tag">Fix</span><span>Repairs a draft that won't send because of an error like <strong>409</strong> or "already exists", and lets you rename it.</span></div>
+<div class="feature"><span class="tag">Save copy</span><span>Downloads a copy of a draft to your device, so the answers are never lost.</span></div>
+</section>
+
+<section class="card">
+<h2>1. Copy the bookmark code</h2>
+<button class="btn" id="copyBtn" type="button">Copy code</button>
+<div class="copied" id="copyMsg" aria-live="polite"></div>
+<textarea id="code" readonly aria-label="Bookmark code"></textarea>
+<p class="note">If the button doesn't work, tap inside the box, select all, and copy.</p>
+</section>
+
+<section class="card">
+<h2>2. Create the bookmark</h2>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" aria-selected="true" data-pane="android" type="button">Android</button>
+<button class="tab" role="tab" aria-selected="false" data-pane="desktop" type="button">Computer</button>
+</div>
+<div class="pane" id="android">
+<ol>
+<li>In Chrome, tap <span class="k">⋮</span> at the top right, then tap the star <span class="k">☆</span> to bookmark this page.</li>
+<li>Tap <span class="k">Edit</span> on the message that appears at the bottom. If you miss it, go to <span class="k">⋮</span> › <span class="k">Bookmarks</span>, find this page, and choose <span class="k">Edit</span>.</li>
+<li>Change the name to <strong>Enketo Toolkit</strong>.</li>
+<li>In the URL box, delete everything and paste the code you copied.</li>
+<li>Go back to save.</li>
+</ol>
+</div>
+<div class="pane" id="desktop" hidden>
+<ol>
+<li>Show the bookmarks bar with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> (<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> on Mac).</li>
+<li>Drag this button onto the bookmarks bar:</li>
+</ol>
+<p><a class="btn secondary" id="dragLink" href="#">Enketo Toolkit</a></p>
+<p class="note">Or use the Android method: bookmark this page, edit it, name it Enketo Toolkit, and paste the code into the URL.</p>
+</div>
+</section>
+
+<section class="card">
+<h2>3. Use it</h2>
+<ol>
+<li>Open the Enketo form that has the problem draft.</li>
+<li><strong>Android:</strong> tap the address bar, type <strong>Enketo</strong>, and tap the <strong>Enketo Toolkit</strong> suggestion with the star icon.<br><strong>Computer:</strong> click <strong>Enketo Toolkit</strong> on the bookmarks bar.</li>
+<li>A panel lists the drafts saved for this form.</li>
+<li>Tap <strong>Save copy</strong> first, to keep a backup of the draft.</li>
+<li>Tap <strong>Fix</strong>, type a name, and confirm. The page reloads.</li>
+<li>Open the draft and submit it. If it was already waiting to upload, it sends by itself after the reload.</li>
+</ol>
+<p class="note">If a draft still won't send after Fix, send the saved copy to your administrator.</p>
+</section>
+
+<section class="card">
+<h2>Problems?</h2>
+<dl>
+<dt>Nothing happens when I tap the bookmark</dt>
+<dd>Make sure you tapped the suggestion with the star icon, not a search result. Check that the bookmark's URL starts with <strong>javascript:</strong>. Some phones remove it when pasting; if so, type it back in.</dd>
+<dt>"Enketo Toolkit could not load"</dt>
+<dd>Check your internet connection and try again.</dd>
+<dt>"Open an Enketo form first"</dt>
+<dd>The bookmark only works on an open Enketo form page.</dd>
+<dt>"No saved drafts for this form"</dt>
+<dd>Drafts belong to one form. Open the form where you saved the draft.</dd>
+</dl>
+</section>
+
+<footer>Enketo Toolkit · <a href="https://github.com/IsslamElkasah/enketo-toolkit">GitHub</a></footer>
+</main>
+<script>
+const LOADER = "javascript:(()=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/IsslamElkasah/enketo-toolkit@main/bookmarklet/toolkit.js?t='+Date.now();s.onerror=()=>alert('Enketo Toolkit could not load. Check your connection.');document.body.appendChild(s);})();";
+const code = document.getElementById('code');
+const msg = document.getElementById('copyMsg');
+const dragLink = document.getElementById('dragLink');
+code.value = LOADER;
+dragLink.href = LOADER;
+dragLink.addEventListener('click', e => { e.preventDefault(); msg.textContent = 'Drag this button to the bookmarks bar instead of clicking it.'; });
+const fallbackCopy = () => { code.focus(); code.select(); code.setSelectionRange(0, code.value.length); return document.execCommand('copy'); };
+document.getElementById('copyBtn').addEventListener('click', async () => {
+let ok = false;
+try { await navigator.clipboard.writeText(LOADER); ok = true; } catch (e) { try { ok = fallbackCopy(); } catch (e2) { ok = false; } }
+msg.textContent = ok ? 'Copied. Now create the bookmark below.' : 'Could not copy. Select the code in the box and copy it.';
+});
+document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
+document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+document.querySelectorAll('.pane').forEach(p => { p.hidden = p.id !== tab.dataset.pane; });
+}));
+if (!/Android/i.test(navigator.userAgent)) document.querySelector('.tab[data-pane="desktop"]').click();
+</script>
+</body>
+</html>
