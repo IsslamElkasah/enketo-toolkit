@@ -132,15 +132,15 @@
   </div>
 
   <div id="importSection">
-    <h3>Restore from Exported XML</h3>
-    <p>Use this on a fresh, working copy of the form to re-populate fields from a previously exported draft. Repeat groups, file uploads, and some special widgets may not fully restore. System fields (instance ID, etc.) are always skipped.</p>
+    <h3>Restore a saved draft</h3>
+    <p>Use this on a fresh, working copy of the form to re-populate fields from a draft saved with Save a copy. Repeat groups, file uploads, and some special widgets may not fully restore. System fields (instance ID, etc.) are always skipped.</p>
     <label style="font-size:11px; color:#555; display:flex; align-items:center; gap:6px; margin-bottom:8px;">
       <input type="checkbox" id="skipCalculatedInput" checked style="margin:0;">
       Skip calculated fields (recommended)
     </label>
     <label for="excludeFieldsInput" style="font-size:11px; color:#555; display:block; margin-bottom:4px;">Also skip fields named (optional, comma-separated):</label>
     <input type="text" id="excludeFieldsInput" value="" style="width:100%; box-sizing:border-box; padding:6px; font-size:12px; margin-bottom:8px; border:1px solid #ccc; border-radius:4px;">
-    <button id="importBtn" class="import-btn">Choose XML File...</button>
+    <button id="importBtn" class="import-btn">Choose a saved draft</button>
     <input type="file" id="importFileInput" accept=".xml" style="display:none;">
   </div>
 

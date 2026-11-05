@@ -1,5 +1,5 @@
 (() => {
-    const VERSION = '1.1.0';
+    const VERSION = '1.1.1';
     const HOST_ID = 'enketo-toolkit-panel';
     const FALLBACK_CORE = 'https://cdn.jsdelivr.net/gh/IsslamElkasah/enketo-toolkit@main/chromium-extension/core.js';
     const selfSrc = document.currentScript && document.currentScript.src;
@@ -69,12 +69,12 @@ details ul { margin: 6px 0 0; padding-left: 20px; color: var(--muted); word-brea
 <div class="list"><div class="msg">Loading...</div></div>
 </div>
 <div class="section">
-<h3>Restore from saved copy</h3>
-<p class="hint">Open a new, empty copy of this form first. Then choose a copy you saved with Save copy. Photos and file uploads are not restored.</p>
+<h3>Restore a saved draft</h3>
+<p class="hint">Open a new, empty copy of this form first. Then choose a draft you saved with Save a copy. Photos and file uploads are not restored.</p>
 <label class="check"><input type="checkbox" class="calc" checked>Skip calculated fields (recommended)</label>
 <label class="field" for="skip">Also skip these fields (optional, separate with commas)</label>
 <input class="text skip" id="skip" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">
-<button class="btn primary wide choose" type="button">Choose saved copy...</button>
+<button class="btn primary wide choose" type="button">Choose a saved draft</button>
 <input class="file" type="file" accept=".xml,text/xml,application/xml" hidden>
 <div class="result"></div>
 </div>
@@ -134,15 +134,15 @@ details ul { margin: 6px 0 0; padding-left: 20px; color: var(--muted); word-brea
             const when = d.updated ? new Date(d.updated).toLocaleString() : '';
             const meta = el('div', 'meta', state + (when ? ' · ' + when : ''));
             const actions = el('div', 'actions');
-            const fixBtn = el('button', 'btn primary', 'Fix');
-            const saveBtn = el('button', 'btn', 'Save copy');
+            const fixBtn = el('button', 'btn primary', 'Rename/Fix');
+            const saveBtn = el('button', 'btn', 'Save a copy');
             const delBtn = el('button', 'btn danger', 'Delete');
             const lock = (on) => [fixBtn, saveBtn, delBtn].forEach((b) => { b.disabled = on; });
 
             fixBtn.onclick = async () => {
                 const newName = prompt('Name for this draft:', d.name || '');
                 if (newName === null) return;
-                if (!confirm('Fix this draft? The page will reload.')) return;
+                if (!confirm('Rename and fix this draft? The page will reload.')) return;
                 lock(true);
                 try {
                     await core.fixDraft(d.instanceId, newName);
@@ -213,7 +213,7 @@ details ul { margin: 6px 0 0; padding-left: 20px; color: var(--muted); word-brea
                 resultEl.textContent = e.message;
             }
             chooseBtn.disabled = false;
-            chooseBtn.textContent = 'Choose saved copy...';
+            chooseBtn.textContent = 'Choose a saved draft';
             fileInput.value = '';
         };
     };

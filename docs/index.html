@@ -16,7 +16,7 @@ h2 { font-size: 19px; margin: 0 0 12px; }
 .lead { color: var(--muted); margin: 0 0 20px; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
 .feature { display: flex; gap: 12px; margin: 10px 0; }
-.tag { flex: none; min-width: 96px; text-align: center; font-weight: 600; font-size: 14px; padding: 6px 10px; border-radius: 8px; background: var(--code); height: fit-content; }
+.tag { flex: none; min-width: 112px; text-align: center; font-weight: 600; font-size: 14px; padding: 6px 10px; border-radius: 8px; background: var(--code); height: fit-content; }
 ol { padding-left: 22px; margin: 0; }
 li { margin: 8px 0; }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 10px; border: 0; background: var(--accent); color: var(--accent-fg); font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; width: 100%; }
@@ -41,8 +41,10 @@ footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 2
 
 <section class="card">
 <h2>What it does</h2>
-<div class="feature"><span class="tag">Fix</span><span>Repairs a draft that won't send because of an error like <strong>409</strong> or "already exists", and lets you rename it.</span></div>
-<div class="feature"><span class="tag">Save copy</span><span>Downloads a copy of a draft to your device, so the answers are never lost.</span></div>
+<div class="feature"><span class="tag">Rename/Fix</span><span>Repairs a draft that won't send because of an error like <strong>409</strong> or "already exists", and lets you rename it.</span></div>
+<div class="feature"><span class="tag">Save a copy</span><span>Downloads a copy of a draft to your device, so the answers are never lost.</span></div>
+<div class="feature"><span class="tag">Delete</span><span>Removes one draft from this form only. Drafts on your other forms are left alone.</span></div>
+<div class="feature"><span class="tag">Choose a saved draft</span><span>Fills a new, empty copy of the form from a draft you saved.</span></div>
 </section>
 
 <section class="card">
@@ -84,11 +86,22 @@ footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 2
 <li>Open the Enketo form that has the problem draft.</li>
 <li><strong>Android:</strong> tap the address bar, type <strong>Enketo</strong>, and tap the <strong>Enketo Toolkit</strong> suggestion with the star icon.<br><strong>Computer:</strong> click <strong>Enketo Toolkit</strong> on the bookmarks bar.</li>
 <li>A panel lists the drafts saved for this form.</li>
-<li>Tap <strong>Save copy</strong> first, to keep a backup of the draft.</li>
-<li>Tap <strong>Fix</strong>, type a name, and confirm. The page reloads.</li>
+<li>Tap <strong>Save a copy</strong> first, to keep a backup of the draft.</li>
+<li>Tap <strong>Rename/Fix</strong>, type a name, and confirm. The page reloads.</li>
 <li>Open the draft and submit it. If it was already waiting to upload, it sends by itself after the reload.</li>
 </ol>
-<p class="note">If a draft still won't send after Fix, send the saved copy to your administrator.</p>
+</section>
+
+<section class="card">
+<h2>4. If the draft is still stuck</h2>
+<ol>
+<li>Make sure you used <strong>Save a copy</strong> on the draft (step 3).</li>
+<li>Open the toolkit and tap <strong>Delete</strong> on the stuck draft, then confirm.</li>
+<li>Open a new, empty copy of the form.</li>
+<li>Open the toolkit and tap <strong>Choose a saved draft</strong>, then pick the file you saved. On Android it is in <strong>Downloads</strong>.</li>
+<li>Check the answers, fill in anything listed as not restored, and submit.</li>
+</ol>
+<p class="note">Photos and file uploads are not restored. Calculated fields are skipped and recalculate on their own. If it still won't send, send the saved file to your administrator.</p>
 </section>
 
 <section class="card">
@@ -102,6 +115,10 @@ footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 2
 <dd>The bookmark only works on an open Enketo form page.</dd>
 <dt>"No saved drafts for this form"</dt>
 <dd>Drafts belong to one form. Open the form where you saved the draft.</dd>
+<dt>The saved draft is greyed out when restoring</dt>
+<dd>In the file picker, open <strong>Downloads</strong> from the menu, or choose to show all files.</dd>
+<dt>A draft saved on my phone, can I restore it on a computer?</dt>
+<dd>Yes. Saved drafts are the same format in the bookmark and the browser extension.</dd>
 </dl>
 </section>
 

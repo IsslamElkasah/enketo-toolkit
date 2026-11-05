@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Enketo Toolkit",
-  "version": "1.0",
-  "description": "Refreshes cached Enketo form data, manages saved drafts (export, rename, delete), restores exported answers onto a fresh form with an option to skip or override calculated fields, and fixes stuck submission errors.",
+  "version": "1.1.1",
+  "description": "Refreshes cached Enketo form data, manages saved drafts (Rename/Fix, Save a copy, Delete), restores a saved draft onto a fresh form with an option to skip or override calculated fields, and fixes stuck submission errors.",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",

@@ -162,7 +162,7 @@
             const done = txDone(tx);
             if (stores.includes('surveys')) tx.objectStore('surveys').delete(enketoId);
             if (stores.includes('resources')) {
-                tx.objectStore('resources').delete(IDBKeyRange.bound(`${enketoId}:`, `${enketoId}:￿`));
+                tx.objectStore('resources').delete(IDBKeyRange.bound(`${enketoId}:`, `${enketoId}:\uffff`));
             }
             await done;
             return { cleared: true };
@@ -188,7 +188,7 @@
     const restoreFromXml = (xmlString, { skipFields = [], skipCalculated = true } = {}) => {
         const xmlDoc = new DOMParser().parseFromString(String(xmlString || ''), 'application/xml');
         if (xmlDoc.querySelector('parsererror') || !xmlDoc.documentElement) {
-            throw new Error('The selected file is not a valid saved copy.');
+            throw new Error('The selected file is not a valid saved draft.');
         }
 
         const excludeSet = new Set(skipFields.map((n) => String(n).trim().toLowerCase()).filter(Boolean));
