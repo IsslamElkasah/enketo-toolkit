@@ -1,5 +1,5 @@
 (() => {
-    const VERSION = '1.1.0';
+    const VERSION = '1.1.1';
     const DB_NAME = 'enketo';
     const ID_RE = /<((?:[\w-]+:)?instanceID)>([^<]*)<\/\1>/;
     const AUTOSAVE_PREFIX = '__autoSave';
